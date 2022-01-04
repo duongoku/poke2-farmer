@@ -1,0 +1,20 @@
+{
+  "name": "poke2-farmer",
+  "version": "1.0.0",
+  "description": "A message watcher discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx tsc index.ts && node -r dotenv/config index.js"
+  },
+  "author": "duongoku",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@discordjs/rest": "^0.2.0-canary.0",
+    "axios": "^0.24.0",
+    "discord-api-types": "^0.26.1",
+    "discord.js": "^13.5.0",
+    "dotenv": "^10.0.0",
+    "typescript": "^4.5.4"
+  }
+}
