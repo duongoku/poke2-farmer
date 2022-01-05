@@ -2,6 +2,8 @@ import { Client, Intents } from "discord.js";
 import axios from "axios";
 import * as fs from "fs";
 
+require("dotenv").config();
+
 const pokemons = JSON.parse(
     fs.readFileSync("./pokemon_names.json", {
         encoding: "utf8",
@@ -47,7 +49,7 @@ async function send_random_sentence(channelID: string, count: number) {
     );
     setTimeout(() => {
         send_random_sentence(channelID, count);
-    }, 3000);
+    }, 2000);
 }
 
 function match_name(hint: string, name: string) {
@@ -76,7 +78,7 @@ function get_candidates(hint: string) {
 }
 
 async function get_hint(channelID: string) {
-    await new Promise(resolve => setTimeout(resolve, 10000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     axios.post(
         `https://discord.com/api/v9/channels/${channelID}/messages`,
         {
@@ -90,7 +92,7 @@ async function get_hint(channelID: string) {
 }
 
 async function answer(hint: string, channelID: string) {
-    await new Promise(resolve => setTimeout(resolve, 10000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     hint = hint.slice(0, -1);
     hint = hint.replace(/\\/g, "");
     get_candidates(hint).forEach((candidate) => {
@@ -131,17 +133,17 @@ client.on("messageCreate", (message) => {
             if (message.embeds[0].title.includes("appeared")) {
                 console.log(message.embeds[0].title);
                 console.log("Catching . . .");
-                try{
+                try {
                     get_hint(message.channel.id);
-                } catch(e) {
+                } catch (e) {
                     console.log(e);
                 }
             }
         } else {
             if (message.content.includes("The pokémon is")) {
-                try{
+                try {
                     answer(message.content.split(" ")[3], message.channel.id);
-                } catch(e) {
+                } catch (e) {
                     console.log(e);
                 }
             } else if (message.content.includes("You caught a")) {
