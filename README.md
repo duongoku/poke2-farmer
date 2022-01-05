@@ -22,7 +22,7 @@ A script for farming pokemons on Discord
    2. DISCORD_AUTH_1 is the authorization token of your *main* Discord account. [Click here](#authorization-token) to learn how to obtain this token.
    3. DISCORD_AUTH_2 is the authorization token of your *clone* Discord account(You can also put your main account's token here too).
    4. SPAM_CHANNEL_ID is the channel ID where you are allowed to spam.
-3. Run `npm start`
+3. Run `npm install` to install packages and then `npm start`.
 
 # Authorization Token
 This are steps on how to obtain this token:
